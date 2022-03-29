@@ -2,10 +2,9 @@ package com.api.parkingcontrol.services;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.repositories.IParkingSpotRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Transient;
+import javax.transaction.Transactional;
 
 @Service
 public class ParkingSpotService {
@@ -16,8 +15,21 @@ public class ParkingSpotService {
         this.iParkingSpotRepository = iParkingSpotRepository;
     }
 
-    @Transient
-    public ParkingSpotModel save(ParkingSpotModel parrkingSpotModel) {
-        return iParkingSpotRepository.save(parrkingSpotModel);
+    @Transactional
+    public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
+        return iParkingSpotRepository.save(parkingSpotModel);
     }
+
+    public boolean existsByLicensePlateCar (String licensePlateCar){
+        return iParkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
+    }
+
+    public boolean existsByLicenseParkingSpotNumber (String parkingSpotNumber){
+        return iParkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
+    }
+
+    public boolean existsByApartmentAndBlock (String apartment, String block){
+        return iParkingSpotRepository.existsByApartmentAndBlock(apartment, block);
+    }
+
 }

@@ -6,15 +6,15 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_PARKING_SPOT")
+@Table(name = "TB_PARKING_SPOT_TWO")
 public class ParkingSpotModel implements Serializable{
     private  static final long serialVerionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(nullable=false, unique = true, length=10)
-    private String parrkingSpotNumber;
+    @Column(nullable=false, unique = true, length=100)
+    private String parkingSpotNumber;
     @Column(nullable=false, unique=true, length=7)
     private String licensePlateCar;
     @Column(nullable = false, length = 70)
@@ -40,12 +40,12 @@ public class ParkingSpotModel implements Serializable{
         this.id = id;
     }
 
-    public String getParrkingSpotNumber() {
-        return parrkingSpotNumber;
+    public String getParkingSpotNumber() {
+        return parkingSpotNumber;
     }
 
-    public void setParrkingSpotNumber(String parrkingSpotNumber) {
-        this.parrkingSpotNumber = parrkingSpotNumber;
+    public void setParkingSpotNumber(String parrkingSpotNumber) {
+        this.parkingSpotNumber = parrkingSpotNumber;
     }
 
     public String getLicensePlateCar() {
